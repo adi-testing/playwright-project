@@ -1,2 +1,2 @@
 # playwright-project
-Repository for Playwright together
+Repository for learning Playwright together
