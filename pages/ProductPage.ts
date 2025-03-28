@@ -51,10 +51,24 @@ export class ProductPage {
         await quantityInput.fill(String(quantity));
     }
 
-    async selectSize(size: string) {
+    async selectCheckboxSize(size: string) {
+        // Check the checkbox
+        await this.page.getByLabel(size).check();
+
         // Select the size
-        const sizeOption = this.page.locator(`text="${size}"`);
-        await sizeOption.click();
+        //const sizeOption = this.page.locator(`text="${size}"`);
+        //await sizeOption.click();
+    }
+
+    async selectColorDropdownMenu(color: string) {
+        // Locate the element containing the color
+        const element = this.page.locator("label:has-text('Colour')");
+
+        // Locate the dropdown menu for the color
+        const colorOption = element.locator(`select[name*="option"]`);
+
+        // Select the color option
+        await colorOption.locator(`option:has-text("${color}")`).click();
     }
 
     async clickAddToCart() {

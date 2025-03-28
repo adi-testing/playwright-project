@@ -11,9 +11,14 @@ export class LoginPage {
         const loginNameInput = this.page.locator('#loginFrm_loginname');
         const passwordInput = this.page.locator('#loginFrm_password');
         const loginButton = this.page.locator('button:has-text("Login")');
-    
-        await loginNameInput.fill(username); // Fill the username
-        await passwordInput.fill(password); // Fill the password
-        await loginButton.click(); // Click the login button
+
+        // Fill the username
+        await loginNameInput.fill(username);
+
+        // Fill the password
+        await passwordInput.fill(password);
+
+        // Click the login button
+        await loginButton.click(); 
     }
 }
