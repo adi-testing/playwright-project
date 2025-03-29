@@ -13,7 +13,7 @@ export class ProductPage {
 
     async selectProductCategory(categoryName: string) {
         // Select the product category
-        const category = this.page.locator(`a[href*="product/category"]:has-text("${categoryName}")`);
+        const category = this.page.locator(`a[href*="product/category"]:has-text("${categoryName}")`).first();
         await category.click();
     }
 
@@ -25,11 +25,11 @@ export class ProductPage {
 
     async selectProductFromTab(categoryName: string, productName: string) {
         // Hover over the category
-        const category = this.page.locator(`a[href*="product/category"]:has-text("${categoryName}")`);
+        const category = this.page.locator(`a[href*="product/category"]:has-text("${categoryName}")`).nth(0); // Use nth(0) for the first match
         await category.hover();
 
         // Click on the product
-        const product = this.page.locator(`a:has-text("${productName}")`);
+        const product = this.page.locator(`a:has-text("${productName}")`).nth(0); // Use nth(0) for the first match
         await product.click();
     } 
 
@@ -51,24 +51,17 @@ export class ProductPage {
         await quantityInput.fill(String(quantity));
     }
 
-    async selectCheckboxSize(size: string) {
+    async selectCheckboxOption(option: string) {
         // Check the checkbox
-        await this.page.getByLabel(size).check();
-
-        // Select the size
-        //const sizeOption = this.page.locator(`text="${size}"`);
-        //await sizeOption.click();
+        await this.page.getByLabel(option).check();
     }
 
-    async selectColorDropdownMenu(color: string) {
-        // Locate the element containing the color
-        const element = this.page.locator("label:has-text('Colour')");
+    async selectDropdownOption(option: string) {
+        // Locate the dropdown menu
+        const dropdown = this.page.locator(`select[id*="option"]`);
 
-        // Locate the dropdown menu for the color
-        const colorOption = element.locator(`select[name*="option"]`);
-
-        // Select the color option
-        await colorOption.locator(`option:has-text("${color}")`).click();
+        // Select the option by its label (text) using the build-in method selectOption
+        await dropdown.selectOption({ label: option });
     }
 
     async clickAddToCart() {
