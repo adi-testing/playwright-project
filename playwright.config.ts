@@ -29,13 +29,13 @@ export default defineConfig({
     baseURL: 'https://automationteststore.com/',
 
     /* Capture screenshots and videos on failure. */
-    screenshot: 'only-on-failure',
+    //screenshot: 'only-on-failure',
 
     /* Record videos for all tests. */
-    video: 'on-first-retry',
+    //video: 'on-first-retry',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    //trace: 'on-first-retry',
   },
 
   /* Configure projects for major browsers */

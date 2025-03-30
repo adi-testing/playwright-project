@@ -14,6 +14,11 @@ let cartPage: CartPage;
 let homePage: HomePage;
 
 test.beforeEach(async ({ page }, testInfo) => {
+    // Log the test name
+    console.log(`Running test: ${testInfo.title}`);
+    // Log the test file name
+    console.log(`Test file: ${testInfo.file}`);
+
     // Initialize page objects for home page, product, and cart interactions
     productPage = new ProductPage(page);
     cartPage = new CartPage(page);
@@ -115,7 +120,24 @@ test.describe('Add products into cart', () => {
 
         // Add to the cart
         await productPage.clickAddToCart();
-    });
+    });    
+});
 
-    
+test.afterEach(async ({ page }, testInfo) => {
+    // Log the test name
+    console.log(`Finished test: ${testInfo.title}`);
+
+    // Log the test duration
+    console.log(`Test duration: ${testInfo.duration}ms`);
+
+    // Log the test status
+    console.log(`Test status: ${testInfo.status}`);
+
+    if (testInfo.status === 'failed') {
+        // Take a screenshot if the test fails
+        await page.screenshot({ path: `screenshots/${testInfo.title}.png` });
+    }
+
+    // Close the page after each test
+    await page.close();
 });

@@ -69,18 +69,10 @@ export class CartPage {
     }
 
     async checkProductQuantity(productName: string, quantity: number) {
-        /**
-         * Locates a table row (`<tr>`) element on the page that contains the specified product name.
-         *
-         * @param productName - The name of the product to search for within the table rows.
-         * @returns A Playwright Locator object representing the matching table row.
-         */
+        // Locates a table row (`<tr>`) element on the page that contains the specified product name.
         const productRow = this.page.locator(`tr:has-text("${productName}")`);
-
-        /**
-         * Locator for the quantity input field within a product row.
-         * This input field is identified by its name attribute containing "quantity".
-         */
+        
+        // Locator for the quantity input field within a product row.             
         const quantityInput = productRow.locator('input[name*="quantity"]');
         
         // Get the current value of the quantity input
