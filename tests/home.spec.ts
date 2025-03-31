@@ -35,6 +35,15 @@ test.describe('Basic functionality', () => {
         // Select the currency
         await homePage.selectCurrency(currency);
     });
+
+    test('Check dropdown options', async ({ page }) => {
+        // Define the title and expected options for the dropdown
+        const title = 'Home';
+        const options = ['Cart'];
+
+        // Check the dropdown options
+        await homePage.checkDropDownOptions(title, options);
+    });
 });
 
 test.afterEach(async ({ page }, testInfo) => {

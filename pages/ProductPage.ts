@@ -35,14 +35,15 @@ export class ProductPage {
 
     async selectItem(itemName: string) {
         // Select the item name
-        const item = this.page.locator(`a[title="${itemName}"]`);
+        const item = this.page.getByTitle(itemName);
+
+        // Click on the item
         await item.click();
     }
 
     async updateQuantity(quantity: number) {
         // Focus on the quantity input
         const quantityInput = this.page.locator('input[name="quantity"]');
-        await quantityInput.click();
 
         // Select all existing text in the input
         await quantityInput.press('Control+a');
@@ -59,7 +60,7 @@ export class ProductPage {
     async selectDropdownOption(option: string) {
         // Locate the dropdown menu
         const dropdown = this.page.locator(`select[id*="option"]`);
-
+ 
         // Select the option by its label (text) using the build-in method selectOption
         await dropdown.selectOption({ label: option });
     }
@@ -67,7 +68,7 @@ export class ProductPage {
     async clickAddToCart() {
         // Locate the "Add to Cart" button
         const addToCartButton = this.page.locator('a.cart:has-text("Add to Cart")');
-    
+          
         // Click the button
         await addToCartButton.click();
     }
