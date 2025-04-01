@@ -1,17 +1,19 @@
 import { test, expect } from '@playwright/test';
 import { HomePage, CartPage, ProductPage } from '../pages';
 import { beforeEach } from 'node:test';
+import { clearReport } from './utils';
 
 // Declare variables to store instances of page objects for reuse across tests
-
-// `productPage`: Represents the product page where product selection and interactions occur
 let productPage: ProductPage;
-
-// `cartPage`: Represents the cart page where cart-related actions and verifications are performed
 let cartPage: CartPage;
-
-// `homePage`: Represents the home page for navigation and initial setup
 let homePage: HomePage;
+
+test.beforeAll('Setup', async () => {
+    console.log("Starting all tests in file");
+
+    // Clear the playwright-report directory before running tests
+    clearReport();
+});
 
 test.beforeEach(async ({ page }, testInfo) => {
     // Log the test name
@@ -140,4 +142,8 @@ test.afterEach(async ({ page }, testInfo) => {
 
     // Close the page after each test
     await page.close();
+});
+
+test.afterAll('Teardown', async () => {
+    console.log("Finished all tests in file");
 });

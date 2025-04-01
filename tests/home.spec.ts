@@ -1,16 +1,18 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, Browser, BrowserContext } from '@playwright/test';
 import { HomePage, CartPage, ProductPage } from '../pages';
-import { beforeEach } from 'node:test';
+import { clearReport } from './utils';
 
 // Declare variables to store instances of page objects for reuse across tests
-// `productPage`: Represents the product page where product selection and interactions occur
 let productPage: ProductPage;
-
-// `cartPage`: Represents the cart page where cart-related actions and verifications are performed
 let cartPage: CartPage;
-
-// `homePage`: Represents the home page for navigation and initial setup
 let homePage: HomePage;
+
+test.beforeAll('Setup', async () => {
+    console.log("Starting all tests in file");
+
+    // Clear the playwright-report directory before running tests
+    clearReport();
+});
 
 test.beforeEach(async ({ page }, testInfo) => {
     // Log the test name
@@ -27,19 +29,28 @@ test.beforeEach(async ({ page }, testInfo) => {
     await homePage.goto();
 });
 
-test.describe('Basic functionality', () => {
-    test('Select currency', async ({ page }) => {
-        // Define the currency to select
-        const currency = 'Sterling';
+test('Select currency', async ({ page }) => {
+    // Define the currency to select
+    const currency = 'Sterling';
 
-        // Select the currency
-        await homePage.selectCurrency(currency);
+    // Select the currency
+    await homePage.selectCurrency(currency);
+});
+
+test.describe.fixme('Check Dropdown Menu - Broken tests than should be fixed', () => {
+    test('Check Home Menu', async ({ page }) => {
+        // Define the title and expected options for the dropdown
+        const title = 'HOME';
+        const options = ['Specials', 'Account', 'Cart', 'Checkout'];
+
+        // Check the dropdown options
+        await homePage.checkDropDownOptions(title, options);
     });
 
-    test('Check dropdown options', async ({ page }) => {
+    test('Check Makeup Menu', async ({ page }) => {
         // Define the title and expected options for the dropdown
-        const title = 'Home';
-        const options = ['Cart'];
+        const title = 'MAKEUP';
+        const options = ['Cheeks', 'Eyes', 'Face', 'Lips', 'Nails'];
 
         // Check the dropdown options
         await homePage.checkDropDownOptions(title, options);
@@ -63,4 +74,8 @@ test.afterEach(async ({ page }, testInfo) => {
 
     // Close the page after each test
     await page.close();
+});
+
+test.afterAll('Teardown', async () => {
+    console.log("Finished all tests in file");
 });

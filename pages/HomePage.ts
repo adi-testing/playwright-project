@@ -46,7 +46,6 @@ export class HomePage {
     await dropdownTrigger.hover();
 
     // Get all list elements from the dropdown menu
-    //const listItems = await this.page.getByRole('listitem').allTextContents();
     const listItems = await dropdownTrigger.locator('..').getByRole('listitem').allTextContents();
     
     // Trim whitespace from each list item
