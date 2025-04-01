@@ -1,6 +1,6 @@
-# Playwright Project
+# Web Test Automation Using Playwright
 
-This repository is a comprehensive Playwright-based end-to-end testing framework designed for testing web applications. It includes reusable page object models, utility functions, and a structured test setup to ensure maintainable and scalable test automation.
+This repository is an example of a Playwright-based end-to-end testing framework designed for testing web applications. It includes reusable page object models, utility functions, and a structured test setup to ensure maintainable and scalable test automation.
 
 ## Features
 
@@ -14,6 +14,9 @@ This repository is a comprehensive Playwright-based end-to-end testing framework
 ## Website Under Test
 
 This project is designed to test the functionalities of [Automation Test Store](https://automationteststore.com/), a demo e-commerce website. The tests cover various workflows such as navigation, login, product search, and cart management.
+
+### Credit and Disclaimer
+This project uses [Automation Test Store](https://automationteststore.com/) as the website under test. All tests are conducted for **educational purposes only**, as the author is still learning Playwright. No commercial use or harm to the website is intended.
 
 ## Setup Instructions
 
