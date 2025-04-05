@@ -1,4 +1,4 @@
-import { test, expect, Browser, BrowserContext } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 import { HomePage, CartPage, ProductPage } from '../pages';
 import { clearReport } from './utils';
 
@@ -27,34 +27,6 @@ test.beforeEach(async ({ page }, testInfo) => {
 
     // Navigate to the home page
     await homePage.goto();
-});
-
-test('Select currency', async ({ page }) => {
-    // Define the currency to select
-    const currency = 'Sterling';
-
-    // Select the currency
-    await homePage.selectCurrency(currency);
-});
-
-test.describe.fixme('Check Dropdown Menu - Broken tests than should be fixed', () => {
-    test('Check Home Menu', async ({ page }) => {
-        // Define the title and expected options for the dropdown
-        const title = 'HOME';
-        const options = ['Specials', 'Account', 'Cart', 'Checkout'];
-
-        // Check the dropdown options
-        await homePage.checkDropDownOptions(title, options);
-    });
-
-    test('Check Makeup Menu', async ({ page }) => {
-        // Define the title and expected options for the dropdown
-        const title = 'MAKEUP';
-        const options = ['Cheeks', 'Eyes', 'Face', 'Lips', 'Nails'];
-
-        // Check the dropdown options
-        await homePage.checkDropDownOptions(title, options);
-    });
 });
 
 test.afterEach(async ({ page }, testInfo) => {

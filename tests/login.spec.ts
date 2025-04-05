@@ -1,6 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { HomePage } from '../pages/HomePage';
-import { LoginPage } from '../pages/LoginPage';
+import { HomePage, LoginPage } from '../pages';
 import { clearReport } from './utils';
 
 test.beforeAll('Setup', async () => {

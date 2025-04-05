@@ -1,6 +1,5 @@
 import { test, expect } from '@playwright/test';
 import { HomePage, CartPage, ProductPage } from '../pages';
-import { beforeEach } from 'node:test';
 import { clearReport } from './utils';
 
 // Declare variables to store instances of page objects for reuse across tests
