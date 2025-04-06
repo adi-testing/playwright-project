@@ -27,7 +27,7 @@ Follow these steps to set up and run the project:
 
 ### 2. Clone the Repository
 ```bash
-git clone https://github.com/rallymodus/playwright-project.git
+git clone https://github.com/adi-testing/playwright-project.git
 cd playwright-project
 ```
 
