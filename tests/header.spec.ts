@@ -27,7 +27,12 @@ test.beforeEach(async ({ page }, testInfo) => {
     await homePage.goto();
 });
 
-test(('Select currency'), async () => {
+test('Select currency', {
+    annotation: {
+        type: 'ui-settings',
+        description: 'Validates the ability to select and apply a currency from the dropdown menu in the header.'
+    }
+}, async () => {
     // Define the currency to select
     const currency = 'Sterling';
 
@@ -35,67 +40,87 @@ test(('Select currency'), async () => {
     await header.selectCurrency(currency);
 });
 
-test.describe('Dropdown Menu', () => {
-    test('Check Apparel & Accessories', async () => {
-        // Define the title and expected options for the dropdown
+test.describe('Dropdown Menu', {
+    annotation: {
+        type: 'ui-navigation',
+        description: 'Validates the dropdown menu categories and their respective options on the header navigation bar.'
+    }
+}, () => {
+
+    test('Check Apparel & Accessories', {
+        annotation: {
+            type: 'ui-navigation',
+            description: 'Ensures the dropdown options under "Apparel & Accessories" are displayed correctly.'
+        }
+    }, async () => {
         const category = 'Apparel & accessories';
         const links = ['Shoes', 'T-shirts'];
-
-        // Check the dropdown options
         await header.verifyDropDownOptions(category, links);
     });
 
-    test('Check Makeup', async () => {
-        // Define the title and expected options for the dropdown
+    test('Check Makeup', {
+        annotation: {
+            type: 'ui-navigation',
+            description: 'Ensures the dropdown options under "Makeup" are displayed correctly.'
+        }
+    }, async () => {
         const category = 'Makeup';
         const links = ['Cheeks', 'Eyes', 'Face', 'Lips', 'Nails'];
-
-        // Check the dropdown options
         await header.verifyDropDownOptions(category, links);
     });
 
-    test('Check Skincare', async () => {
-        // Define the title and expected options for the dropdown
+    test('Check Skincare', {
+        annotation: {
+            type: 'ui-navigation',
+            description: 'Ensures the dropdown options under "Skincare" are displayed correctly.'
+        }
+    }, async () => {
         const category = 'Skincare';
         const links = ['Eyes', 'Face', 'Gift Ideas & Sets', 'Hands & Nails', 'Sun'];
-
-        // Check the dropdown options
         await header.verifyDropDownOptions(category, links);
     });
 
-    test('Check Fragrance', async () => {
-        // Define the title and expected options for the dropdown
+    test('Check Fragrance', {
+        annotation: {
+            type: 'ui-navigation',
+            description: 'Ensures the dropdown options under "Fragrance" are displayed correctly.'
+        }
+    }, async () => {
         const category = 'Fragrance';
-        const links = ['Men', 'Women']; 
-
-        // Check the dropdown options
+        const links = ['Men', 'Women'];
         await header.verifyDropDownOptions(category, links);
-    });  
-      
-    test('Check Men', async () => {
-        // Define the title and expected options for the dropdown
+    });
+
+    test('Check Men', {
+        annotation: {
+            type: 'ui-navigation',
+            description: 'Ensures the dropdown options under "Men" are displayed correctly.'
+        }
+    }, async () => {
         const category = 'Men';
         const links = ['Body & Shower', 'Fragrance Sets', 'Pre-Shave & Shaving', 'Skincare'];
-    
-        // Check the dropdown options
         await header.verifyDropDownOptions(category, links);
     });
 
-    test('Check Hair Care', async () => {
-        // Define the title and expected options for the dropdown
+    test('Check Hair Care', {
+        annotation: {
+            type: 'ui-navigation',
+            description: 'Ensures the dropdown options under "Hair Care" are displayed correctly.'
+        }
+    }, async () => {
         const category = 'Hair Care';
         const links = ['Conditioner', 'Shampoo'];
-    
-        // Check the dropdown options
         await header.verifyDropDownOptions(category, links);
     });
 
-    test('Check Books', async () => {
-        // Define the title and expected options for the dropdown
+    test('Check Books', {
+        annotation: {
+            type: 'ui-navigation',
+            description: 'Ensures the dropdown options under "Books" are displayed correctly.'
+        }
+    }, async () => {
         const category = 'Books';
         const links = ['Audio CD', 'Paperback'];
-    
-        // Check the dropdown options
         await header.verifyDropDownOptions(category, links);
     });
 });

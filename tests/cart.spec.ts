@@ -29,8 +29,18 @@ test.beforeEach(async ({ page }, testInfo) => {
     await homePage.goto();
 });
 
-test.describe('Add products into cart', () => {    
-    test('Buy lipstick', async ({ page }) => {
+test.describe('Add products into cart', {
+    annotation: {
+        type: 'ui-cart',
+        description: 'Tests for adding products to the cart and verifying their details.'
+    }
+}, () => {    
+    test('Buy lipstick', {
+        annotation: {
+            type: 'ui-cart',
+            description: 'Validates adding a lipstick to the cart and verifying its quantity.'
+        }
+    }, async ({ page }) => {
         // Define variables
         const productName = 'Viva Glam Lipstick';
         const productQuantity = 5;
@@ -52,7 +62,12 @@ test.describe('Add products into cart', () => {
         await cartPage.checkProductQuantity(productName, productQuantity);
     });
 
-    test('Buy shoes', async ({ page }) => {
+    test('Buy shoes', {
+        annotation: {
+            type: 'ui-cart',
+            description: 'Validates adding shoes to the cart and verifying their size, color, and quantity.'
+        }
+    }, async ({ page }) => {
         // Define variables
         const productName = 'New Ladies High Wedge Heel Toe Thong Diamante Flip Flop Sandals';
         const productQuantity = 2;   
@@ -83,7 +98,12 @@ test.describe('Add products into cart', () => {
         await cartPage.checkProductInformation(productName, productColor);
     });
 
-    test('Flow testing - Buy multiple products', async ({ page }) => {
+    test('Flow testing - Buy multiple products', {
+        annotation: {
+            type: 'ui-cart',
+            description: 'Validates adding multiple products to the cart in a single flow and verifying their details.'
+        }
+    }, async ({ page }) => {
         // Define variables
         const productName_1 = 'Waterproof Protective Undereye Concealer';
         const productQuantity_1 = 3;
