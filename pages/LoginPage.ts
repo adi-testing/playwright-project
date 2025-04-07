@@ -21,4 +21,11 @@ export class LoginPage {
         // Click the login button
         await loginButton.click(); 
     }
+
+    async verifyErrorMessage() {
+        const errorMessage = this.page.getByText('Error: Incorrect login or password provided.');
+        // Wait for the error message to be visible
+        await errorMessage.waitFor({ state: 'visible' });
+
+    }
 }

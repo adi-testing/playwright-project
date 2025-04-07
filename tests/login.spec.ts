@@ -1,23 +1,20 @@
-import { test, expect } from '@playwright/test';
-import { HomePage, LoginPage } from '../pages';
-import { clearReport } from './utils';
+import { test } from './fixtures';
 
 test.beforeAll('Setup', async () => {
     console.log("Starting all tests in file");
 
-    // Clear the playwright-report directory before running tests
-    clearReport();
 });
 
-test('Login with invalid credentials', async ({ page }) => {
-    const homePage = new HomePage(page);
-    await homePage.goto();
+test('Login with invalid credentials', async ({ homePage, loginPage }) => {
+
+    // Go to the login page
     await homePage.goToLogin();
     
-    const loginPage = new LoginPage(page);
+    // Verify the URL
     await loginPage.login('testuser', 'testpassword');
 
-    await expect(page.getByText('× Error: Incorrect login or')).toBeVisible();
+    // Verify the error message
+    await loginPage.verifyErrorMessage();
 });
 
 test.afterAll('Teardown', async () => {
